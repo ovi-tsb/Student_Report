@@ -1,0 +1,46 @@
+<div class="container">  
+  <h1>Report</h1>
+
+  <% @students.each do |s| %>
+    
+    <b>Student ID: </b><%= s.id %>,
+    <b> Name: </b><%= s.name %> <br>
+    <b> Total average: </b>???<%=  %><br>
+      <div class="right"> 
+        <% @courses.each do |c| %>
+          
+          <b>Course: </b><%= c.name %>,
+          <b>Teacher: </b><%= c.teacher %> 
+          <b>Course Id: </b><%= c.id %>
+          <b>Student ID: </b><%= s.id %>,<br>
+          <b>Final grade :</b>
+              
+              <% @tests.each do |t| %>
+                <% t.id %>
+                <% @mark_test = Mark.where(:student_id => s.id, :test_id => t.id).sum(:mark) %>
+                <% @mark_test %>
+                <% @weight_course =  Test.where(:course_id => c.id, :weight => t.weight, :id => t.id).sum(:weight) / 10 %> 
+                <% if @weight_course != 0%>
+                  <% @weight_course %>  
+                <% end %>
+
+                <!-- <b> = </b> -->
+                <% @weight_and_mark = (@mark_test * @weight_course) %>
+                <% if @weight_and_mark != 0%>
+                  <%= @weight_and_mark %>
+                <% end %>
+                
+                
+
+                  
+               
+                
+              <% end %>
+                
+          <br>
+        <% end %>
+      </div> 
+    <br>
+  <% end %>
+  
+</div>
