@@ -16,7 +16,7 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
-    @student.student_id = current_student.id
+    # @student.student_id = current_student.id
 
     if @student.save
       redirect_to @student, notice: 'Student was created successfully'

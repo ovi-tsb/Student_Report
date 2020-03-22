@@ -1,9 +1,9 @@
 class MarksController < ApplicationController
-  # before_action :set_mark
+  before_action :set_mark, only: [:show, :edit, :update, :destroy]
   def index
     @marks = Mark.all
-    @tests = Test.all
-    @students = Student.all
+    # @tests = Test.all
+    # @students = Student.all
   end
   def show
    @marks = Mark.find(params[:id])
@@ -13,7 +13,7 @@ class MarksController < ApplicationController
     # @mark_test = Mark.where(:student_id => s.id, :test_id => t.id).sum(:mark)
   end
 
-  # def set_mark
-  #   @mark = Mark.find(params[:id])
-  # end
+  def set_mark
+    @mark = Mark.find(params[:id])
+  end
 end

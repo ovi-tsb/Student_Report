@@ -20,5 +20,6 @@ CSV.foreach("lib/seeds/tests.csv", { encoding: "UTF-8", headers: true, header_co
 end
 
 CSV.foreach("lib/seeds/marks.csv", { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all}) do |row|
-  Mark.create(row.to_hash)
+  Mark.create!(row.to_hash)
+  puts "Mark have been created"
 end
